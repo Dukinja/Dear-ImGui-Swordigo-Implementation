@@ -56,7 +56,7 @@ android {
 			}
 		}
 		debug {
-			signingConfig = signingConfigs.release
+			signingConfig = signingConfigs.debug
 			debuggable true
 			minifyEnabled false
 

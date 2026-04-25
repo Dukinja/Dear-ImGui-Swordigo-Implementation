@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -322,6 +323,17 @@ public class MainActivity extends Activity implements Runnable {
 
 		return super.onKeyDown(var1, var2);
 	}
+
+	@Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        NativeBridge.imguiTouch(ev.getActionMasked(), ev.getX(), ev.getY());
+
+        if (NativeBridge.imguiWantCapture()) {
+            return true;
+        }
+
+        return super.dispatchTouchEvent(ev);
+    }
 
 	protected void onPause() {
 		super.onPause();

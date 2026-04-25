@@ -91,6 +91,7 @@ add_library(mini SHARED
         lua_libs/mini/debug.c
         lua_libs/mini/recreate_hero.c
         lua_libs/mini/the_map_function.c
+        lua_libs/mini/imgui.c
 
         lua_libs/mini_health/health.c
 
@@ -123,8 +124,15 @@ add_library(mini SHARED
         features/cstrings/register.c
         features/cstrings/hooks.c
         features/cstrings/file.c
+        features/imgui/imgui.cpp
 
         # 3rd-party libs (Git Submodules)
+
+        libs/imgui/imgui.cpp
+        libs/imgui/imgui_draw.cpp
+        libs/imgui/imgui_tables.cpp
+        libs/imgui/imgui_widgets.cpp
+        libs/imgui/imgui_demo.cpp
 
         libs/luasocket/src/luasocket.c
         libs/luasocket/src/io.c
@@ -157,6 +165,7 @@ set_target_properties(
 target_include_directories(mini
         PUBLIC ${CMAKE_SOURCE_DIR}
         PUBLIC ${CMAKE_SOURCE_DIR}/lua
+        PUBLIC ${CMAKE_SOURCE_DIR}/libs/imgui
 )
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -169,4 +178,6 @@ target_link_libraries(mini
         GlossHook
         log
         android
+        EGL
+        GLESv1_CM
 )

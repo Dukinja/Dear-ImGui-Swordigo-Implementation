@@ -27,6 +27,7 @@ static const luaL_Reg global_libs[] = {
 static const luaL_Reg mini_sub_libs[] = {
 	{"Health",    miniLL_open_health},
 	{"Character", miniLL_open_character},
+	{"ImGui",     miniLL_open_imgui},
 	{NULL, NULL}
 };
 

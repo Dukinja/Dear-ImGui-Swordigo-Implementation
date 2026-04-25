@@ -11,5 +11,6 @@ int miniLL_toggle_debug(lua_State *L);
 int miniLL_recreate_hero(lua_State *L);
 int miniLL_get_arch(lua_State *L);
 int miniLL_the_map_function(lua_State *L);
+void initLL_imgui(void);
 
 #endif //SWMINI_MINI_LUA_LIBRARY_H

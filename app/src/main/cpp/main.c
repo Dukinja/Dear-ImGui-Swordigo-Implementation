@@ -73,6 +73,7 @@ void midLoad() {
 	initF_cstrings();
 	initF_armor_models();
 	initF_achievements();
+	initF_imgui();
 
 	/* Events */
 	initEV_profile();
@@ -83,6 +84,7 @@ void midLoad() {
 	initLL_recreate_hero();
 	initLL_map_function();
 	initLL_character();
+	initLL_imgui();
 
 	initLL_components();
 

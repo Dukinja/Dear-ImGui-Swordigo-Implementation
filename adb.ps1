@@ -1,0 +1,2 @@
+& "C:\Users\Owner\AppData\Local\Android\Sdk\platform-tools\adb.exe" logcat -c
+& "C:\Users\Owner\AppData\Local\Android\Sdk\platform-tools\adb.exe" logcat | Select-String -Pattern "MiniFeatureImGui|MiniNativeMain|MiniHookCore|AndroidRuntime|FATAL EXCEPTION|SIGSEGV|libmini|libGlossHook|libswordigo"

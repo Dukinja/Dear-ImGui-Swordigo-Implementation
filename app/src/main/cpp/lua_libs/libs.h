@@ -14,6 +14,7 @@ int miniLL_open_components(lua_State *L);
 /* Mini sub-libs. The only difference is what table they're placed in inside `program_state.c` */
 int miniLL_open_health(lua_State *L);
 int miniLL_open_character(lua_State *L);
+int miniLL_open_imgui(lua_State *L);
 
 
 #endif /* NEEDLE_LUA_LIBS_H */
