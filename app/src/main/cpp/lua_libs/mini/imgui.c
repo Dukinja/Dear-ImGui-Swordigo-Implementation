@@ -4,6 +4,32 @@
 #include "lauxlib.h"
 #include "lua.h"
 
+static const char* imgui_wrapper_code = 
+    "return function(ig)\n"
+    "    ig.Windows = {}\n"
+    "    ig.CreateWindow = function(title, width, height, draw_callback)\n"
+    "        ig.Windows[title] = { width = width, height = height, draw = draw_callback, first_run = true }\n"
+    "    end\n"
+    "    ig.StartMasterLoop = function()\n"
+    "        while true do\n"
+    "                if ig.IsEnabled() then\n"
+    "                    ig.Clear()\n"
+    "                    for title, win in pairs(ig.Windows) do\n"
+    "                        if win.first_run then\n"
+    "                            ig.SetNextWindowSize(win.width, win.height)\n"
+    "                            win.first_run = false\n"
+    "                        end\n"
+    "                        \n"
+    "                        ig.Begin(title, true)\n"
+    "                        win.draw()\n"
+    "                        ig.End()\n"
+    "                    end\n"
+    "                end\n"
+    "            Program.Wait(0.033)"
+    "        end\n"
+    "    end\n"
+    "end\n";
+
 static int miniLL_imgui_set_enabled(lua_State *L) {
     miniImguiLua_SetEnabled(lua_toboolean(L, 1));
     return 0;
@@ -21,7 +47,7 @@ static int miniLL_imgui_clear(lua_State *L) {
 
 static int miniLL_imgui_begin(lua_State *L) {
     const char *title = luaL_optstring(L, 1, "Mini.ImGui");
-    int has_close = lua_toboolean(L, 2); // Pass true to show the X button
+    int has_close = lua_toboolean(L, 2); 
     miniImguiLua_Begin(title, has_close);
     return 0;
 }
@@ -115,6 +141,20 @@ static const luaL_Reg mini_imgui_lib[] = {
 int miniLL_open_imgui(lua_State *L) {
     lua_newtable(L);
     luaL_register(L, NULL, mini_imgui_lib);
+
+    if (luaL_loadstring(L, imgui_wrapper_code) == 0) {
+        if (lua_pcall(L, 0, 1, 0) == 0) {
+            lua_pushvalue(L, -2); 
+            if (lua_pcall(L, 1, 0, 0) != 0) {
+                lua_pop(L, 1);
+            }
+        } else {
+            lua_pop(L, 1);
+        }
+    } else {
+        lua_pop(L, 1);
+    }
+
     return 1;
 }
 
