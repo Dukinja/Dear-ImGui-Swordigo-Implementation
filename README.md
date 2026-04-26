@@ -128,3 +128,7 @@ end
 ```lua
 r, g, b = ig.ColorEdit3("Aura Color", r, g, b)
 ```
+
+# More Functions
+
+You can request for more Dear ImGui Functions by creating a Issue (GitHub Issue) or by messaging me on Discord (@xdukinja/XDukinja#7824). 
