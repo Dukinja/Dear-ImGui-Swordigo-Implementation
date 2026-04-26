@@ -76,7 +76,7 @@ end
 ```lua
 god_mode = ig.Checkbox("God Mode", god_mode)
 ```
-**NOTE: USE GETTERS AND SETTERS. Example:**
+**NOTE: USE SETTERS. Example:**
 
 ```lua
 local ig = Mini.ImGui
