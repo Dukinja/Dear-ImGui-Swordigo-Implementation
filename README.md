@@ -15,6 +15,7 @@ local chkbox = false
 local slider = 1.0
 if r == nil then r, g, b = 1.0, 0.0, 0.0 end
 
+```lua
 ig.CreateWindow("test window", 400, 300, function()
     ig.Text("test text")
     ig.Separator()
@@ -29,6 +30,6 @@ ig.CreateWindow("test window", 400, 300, function()
      if ig.CollapsingHeader("collapsing header test", true) then
         r, g, b = ig.ColorEdit3("test color", r, g, b)
     end
-end)
+end)```
 
 ig.StartMasterLoop()
