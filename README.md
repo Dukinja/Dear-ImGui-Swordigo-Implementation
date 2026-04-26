@@ -86,9 +86,9 @@ ig.CreateWindow("Debug Window", 400, 300, function()
     test_bool = ig.Checkbox("Debug Box", test_bool)
 
     if test_bool then
-        ig.Text("STATE: TICKED (Lua sees TRUE)")
+        Game.SetCinematicMode(true, true)
     else
-        ig.Text("STATE: UNTICKED (Lua sees FALSE)")
+        Game.SetCinematicMode(false, false)
     end
 end)
 ig.StartMasterLoop()
