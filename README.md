@@ -76,6 +76,23 @@ end
 ```lua
 god_mode = ig.Checkbox("God Mode", god_mode)
 ```
+**NOTE: USE GETTERS AND SETTERS. Example:**
+
+```lua
+local ig = Mini.ImGui
+local test_bool = false
+
+ig.CreateWindow("Debug Window", 400, 300, function()
+    test_bool = ig.Checkbox("Debug Box", test_bool)
+
+    if test_bool then
+        ig.Text("STATE: TICKED (Lua sees TRUE)")
+    else
+        ig.Text("STATE: UNTICKED (Lua sees FALSE)")
+    end
+end)
+ig.StartMasterLoop()
+```
 
 # SliderFloat(label, value, min, max)
 **Description: A horizontal slider for decimal numbers. Returns the updated value.**
