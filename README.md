@@ -1,14 +1,14 @@
-**features:**
+# Features:
 
-full touch support
-all functions work
-lua api
+- **Fully Functional Touch**
+- **Functional Dear ImGui Functions**
+- **Lua API**
 
-**todo:**
+# TODO:
 
-work on text input
+- **Work on InputText()**
 
-**example usage:**
+# Example:
 
 ```lua
 local ig = Mini.ImGui
